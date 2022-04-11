@@ -1,0 +1,12 @@
+//width (int32, AUTO = -1)
+-1
+//height (int32, AUTO = -1)
+-1
+//full_screen_options (FULL_SCREEN, BORDERLESS_WINDOW, WINDOW)
+WINDOW
+//field_size (int32)
+40
+//frame_rate (int32, DISABLE <= 0, recommended not to decrease it below 24 because of increasing reaction delay)
+144
+//show_who_lost
+true

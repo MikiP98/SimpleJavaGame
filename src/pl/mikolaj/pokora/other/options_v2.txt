@@ -1,0 +1,23 @@
+//(int32, AUTO = -1)
+width
+1280
+
+//(int32, AUTO = -1)
+height
+720
+
+//(FULL_SCREEN, BORDERLESS_WINDOW, WINDOW)
+full_screen_options
+WINDOW
+
+//int32
+field_size
+40
+
+//(int32, DISABLE <= 0)
+force_min_frame_rate
+144
+
+//boolean
+show_who_lost
+true
