@@ -12,7 +12,7 @@ import java.util.Scanner;
 @Getter
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         Constant.readAllOptions();
 
         Team team = new Team (
@@ -20,7 +20,8 @@ public class Main {
             new Archer("Legolas", 400, 360, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_CONTROL, KeyEvent.VK_NUMPAD0),
             new Healer("Radogast", 40, 320, KeyEvent.VK_H, KeyEvent.VK_K, KeyEvent.VK_U, KeyEvent.VK_J, KeyEvent.VK_Y, KeyEvent.VK_I),
             new Mage("Gendolf", 200, 240, KeyEvent.VK_NUMPAD4, KeyEvent.VK_NUMPAD6, KeyEvent.VK_NUMPAD8, KeyEvent.VK_NUMPAD5, KeyEvent.VK_NUMPAD7, KeyEvent.VK_NUMPAD9),
-            new Asasyn("Creed", 320, 120, KeyEvent.VK_SEMICOLON, KeyEvent.VK_ENTER, KeyEvent.VK_OPEN_BRACKET, KeyEvent.getExtendedKeyCodeForChar('\''), KeyEvent.VK_P, KeyEvent.VK_CLOSE_BRACKET)
+            new Asasyn("Creed", 320, 120, KeyEvent.VK_SEMICOLON, KeyEvent.VK_ENTER, KeyEvent.VK_OPEN_BRACKET, KeyEvent.getExtendedKeyCodeForChar('\''), KeyEvent.VK_P, KeyEvent.VK_CLOSE_BRACKET),
+            new Monster("Ghulik")
         );
         team.info();
 

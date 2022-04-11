@@ -46,6 +46,7 @@ public class Mage  extends CharacterClass {
         return attack(attackedCharacter, this.getAttackAmount(), false);
     }
 
+    @Override
     public void wall() {
         occupiedCells[this.getY() / 40][this.getX() / 40] = 0;
 

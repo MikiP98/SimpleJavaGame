@@ -13,7 +13,7 @@ import java.io.IOException;
 //@Data
 @ToString
 @Getter
-public abstract class CharacterClass implements BaseClass {
+public abstract class CharacterClass extends Things implements BaseClass {
     public static int[][] occupiedCells = new int[(int) Math.floor((float) Constant.window_height / Constant.field_size)][(int) Math.floor((float) Constant.window_width / Constant.field_size)];
     private static int playerCount = 0;
 
@@ -43,12 +43,19 @@ public abstract class CharacterClass implements BaseClass {
     public CharacterClass(String name, int x, int y, int key1, int key2, int key3, int key4, int key5, int key6, int attackAnimationLength) { // x <--> y  :/
         this.id = ++playerCount;
         occupiedCells[(int) Math.floor(x/40)][(int) Math.floor(y/40)] = this.id;
+        this.x = x;
+        this.y = y;
         this.key1 = key1;
         this.key2 = key2;
         this.key3 = key3;
         this.key4 = key4;
         this.key5 = key5;
         this.key6 = key6;
+        this.attackAnimationLength = attackAnimationLength;
+    }
+
+    public CharacterClass(String name, int attackAnimationLength) {
+        this.id = ++playerCount;
         this.attackAnimationLength = attackAnimationLength;
     }
 
@@ -219,7 +226,8 @@ public abstract class CharacterClass implements BaseClass {
     }
 
     public void left(int value) {
-        tryChangePosition(this.getX() - Constant.field_size, this.getY());
+        value = 1;
+        tryChangePosition(this.getX() - (Constant.field_size * value), this.getY());
     }
     public void right(int value) {
         tryChangePosition(this.getX() + Constant.field_size, this.getY());
@@ -231,9 +239,18 @@ public abstract class CharacterClass implements BaseClass {
         tryChangePosition(this.getX(), this.getY() + Constant.field_size);
     }
 
-    public abstract void wall();
+    public void wall() {
+        attack(this, 50, true);
+    }
 
     public void setGodMode() {
         godMode = !godMode;
+    }
+
+    protected void initiatePosition(int x, int y) {
+        setX(x);
+        setY(y);
+
+        occupiedCells[this.y / Constant.field_size][this.x / Constant.field_size] = this.id;
     }
 }

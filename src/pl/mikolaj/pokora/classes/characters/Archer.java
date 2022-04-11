@@ -18,8 +18,6 @@ public class Archer extends CharacterClass {
         this.setAttackAmount(5);
         this.setName(name);
 
-        this.setX(x);
-        this.setY(y);
         this.uploadImage("img/qoi/size_40/characters/archer/archer_base.qoi", "img/qoi/size_40/characters/archer/archer_attack_left.qoi", "img/qoi/size_40/characters/archer/archer_attack_right.qoi");
         this.uploadRangedImage("img/qoi/size_40/characters/archer/archer_ranged_attack_left.qoi", "img/qoi/size_40/characters/archer/archer_ranged_attack_right.qoi");
     }
@@ -31,9 +29,5 @@ public class Archer extends CharacterClass {
     }
     public boolean attack(CharacterClass attackedCharacter) {
         return attack(attackedCharacter, this.getAttackAmount(), false);
-    }
-
-    public void wall() {
-        attack(this, 50, true);
     }
 }

@@ -8,10 +8,8 @@ public class Team {
     private final CharacterClass[] teamMembers;
     public MainWindow mw;
     public void setArena(Syberia arena) {
-        this.arena = arena;
     }
 
-    private Syberia arena;
     public Team(CharacterClass... members) {
         teamMembers = new CharacterClass[members.length];
         System.arraycopy(members, 0, teamMembers, 0, teamMembers.length);

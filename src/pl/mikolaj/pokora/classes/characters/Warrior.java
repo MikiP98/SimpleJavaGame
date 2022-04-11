@@ -30,8 +30,4 @@ public class Warrior extends CharacterClass {
     public boolean attack(CharacterClass attackedCharacter) {
         return attack(attackedCharacter, this.getAttackAmount(), false);
     }
-
-    public void wall() {
-        attack(this, 50, true);
-    }
 }
