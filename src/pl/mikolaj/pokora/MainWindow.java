@@ -82,4 +82,33 @@ public class MainWindow extends JFrame {
 
         setVisible(true);
     }
+
+    public static void gameOver_v2(String name) {
+        System.out.println("lost");
+
+        JFrame frame = new JFrame();
+
+        JLabel label1 = new JLabel("GAME OVER");
+        label1.setFont(new Font("Serif", Font.PLAIN, (int) ((Constant.window_width/40)*2.5)));
+
+        Dimension size1 = label1.getPreferredSize();
+        label1.setSize(size1.width, size1.height);
+
+        label1.setHorizontalAlignment(JLabel.CENTER);
+        frame.add(label1);
+
+        if (Constant.show_who_lost) {
+            JLabel label2 = new JLabel("Player: \"" + name + "\" lost the battle!");
+            label2.setFont(new Font("Serif", Font.PLAIN, (int) ((Constant.window_width/40)*1.5)));
+
+            Dimension size2 = label2.getPreferredSize();
+            label2.setSize(size2.width, size2.height);
+
+            System.out.println("JL: " + JLabel.CENTER);
+            label2.setBounds((int) (Math.floor(Constant.window_width/2) - size2.width), (int) (Math.floor(Constant.window_height/2) - size2.height), size2.width, size2.height);
+            frame.add(label2);
+        }
+
+        frame.setVisible(true);
+    }
 }

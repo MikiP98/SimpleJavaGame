@@ -3,6 +3,8 @@ package pl.mikolaj.pokora.classes;
 //import lombok.Data;
 import lombok.Getter;
 import lombok.ToString;
+
+import pl.mikolaj.pokora.classes.characters.Monster;
 import pl.mikolaj.pokora.classes.enums.AttackType;
 
 import javax.imageio.ImageIO;
@@ -13,7 +15,7 @@ import java.io.IOException;
 //@Data
 @ToString
 @Getter
-public abstract class CharacterClass extends Things implements BaseClass {
+public abstract class CharacterClass implements BaseClass {
     public static int[][] occupiedCells = new int[(int) Math.floor((float) Constant.window_height / Constant.field_size)][(int) Math.floor((float) Constant.window_width / Constant.field_size)];
     private static int playerCount = 0;
 
@@ -34,11 +36,20 @@ public abstract class CharacterClass extends Things implements BaseClass {
     private int maxHealthPoints;
     private int maxManaPoints;
     private int attackManaCost;
-    private int attackAnimationLength;
+    private final int attackAnimationLength;
 
     private boolean attacking = false;
 
     private boolean godMode = false;
+
+
+    public boolean monster;
+    public CharacterClass(String name, int attackAnimationLength, boolean monster) {
+        this.id = ++playerCount;
+        this.attackAnimationLength = attackAnimationLength;
+        this.monster = monster;
+    }
+
 
     public CharacterClass(String name, int x, int y, int key1, int key2, int key3, int key4, int key5, int key6, int attackAnimationLength) { // x <--> y  :/
         this.id = ++playerCount;
@@ -252,5 +263,9 @@ public abstract class CharacterClass extends Things implements BaseClass {
         setY(y);
 
         occupiedCells[this.y / Constant.field_size][this.x / Constant.field_size] = this.id;
+    }
+
+    public void restart(Monster monster) {
+        monster.restart();
     }
 }

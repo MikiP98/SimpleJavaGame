@@ -30,7 +30,7 @@ public class Mage  extends CharacterClass {
                 restoreMana(1);
 
                 try {
-                    Thread.sleep(400);
+                    Thread.sleep((int) Math.floor(400 / (1 + 0.2 * (getLevel() - 1))));
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -43,7 +43,7 @@ public class Mage  extends CharacterClass {
         return attackedCharacter.loseHealth(value, cant_die);
     }
     public boolean attack(CharacterClass attackedCharacter) {
-        return attack(attackedCharacter, this.getAttackAmount(), false);
+        return attack(attackedCharacter, (int) Math.ceil(this.getAttackAmount() * (1 + 0.2 * (this.getLevel() - 1))), false);
     }
 
     @Override

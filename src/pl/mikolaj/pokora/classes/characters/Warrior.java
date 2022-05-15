@@ -28,6 +28,6 @@ public class Warrior extends CharacterClass {
         return val;
     }
     public boolean attack(CharacterClass attackedCharacter) {
-        return attack(attackedCharacter, this.getAttackAmount(), false);
+        return attack(attackedCharacter, (int) Math.ceil(this.getAttackAmount() * (1 + 0.2 * (this.getLevel() - 1))), false);
     }
 }

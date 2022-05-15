@@ -29,7 +29,7 @@ public class Healer extends CharacterClass {
                 restoreMana(1);
 
                 try {
-                    Thread.sleep(300);
+                    Thread.sleep((int) Math.floor(300 / (1 + 0.2 * (getLevel() - 1))));
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -43,10 +43,6 @@ public class Healer extends CharacterClass {
         return val;
     }
     public boolean attack(CharacterClass attackedCharacter) {
-        return attack(attackedCharacter, this.getAttackAmount(), true);
-    }
-
-    public void wall() {
-        attack(this, 50, true);
+        return attack(attackedCharacter, (int) Math.ceil(this.getAttackAmount() * (1 + 0.2 * (this.getLevel() - 1))), true);
     }
 }
